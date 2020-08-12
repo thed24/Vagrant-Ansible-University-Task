@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' 
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
+}
+dependencies {
+    compile 'junit:junit:4.12'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.9.Final'
+    testCompile group: 'com.opentable.components', name: 'otj-pg-embedded', version: '0.13.3'
+    testCompile group: 'com.github.stefanbirkner', name: 'system-rules', version: '1.19.0'
+    compile group: 'org.json', name: 'json', version: '20160810'
+}

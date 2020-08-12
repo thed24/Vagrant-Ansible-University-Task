@@ -1,0 +1,17 @@
+---
+
+- name: Web Server Playbook
+  connection: network_cli
+  gather_facts: false
+  hosts: all
+  tasks:
+
+    - name: Build the jar
+      command: chdir=/vagrant gradle shadowJar
+
+    - name: Start server
+      command: >
+        cp /vagrant/build/libs/*.jar ./server.jar 
+        && java -jar server.jar 0.0.0.0
+      become: yes
+      become_user: root
