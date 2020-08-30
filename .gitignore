@@ -167,3 +167,4 @@ gradlew.bat
 settings.gradle
 gradle
 *.ps1
+.vagrant

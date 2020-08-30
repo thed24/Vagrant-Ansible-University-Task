@@ -1,0 +1,10 @@
+---
+
+- name: Web Server Playbook
+  connection: network_cli
+  gather_facts: false
+  hosts: all
+  become: true
+  roles:
+    - role: java
+    - role: build
