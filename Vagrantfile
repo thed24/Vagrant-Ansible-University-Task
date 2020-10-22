@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
 
   config.vm.define 'db' do |dockerDb|
-    dockerDb.vm.network :private_network, type: "dhcp"
+    dockerDb.vm.network :private_network, type: "dhcp" # Testing a way to get containers to communicate
     dockerDb.vm.provider :docker do |d|
       d.image = 'postgres'
       d.name = "db"
