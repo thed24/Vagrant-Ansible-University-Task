@@ -1,7 +1,7 @@
-FROM ubuntu:16.04
+FROM debian:buster-slim
 
 RUN apt-get update \
-    && apt-get install -y openssh-server sudo wget curl puppet \
+    && apt-get install -y python openssh-server sudo wget curl puppet \
     && apt-get clean
 
 RUN mkdir -p /root/.ssh

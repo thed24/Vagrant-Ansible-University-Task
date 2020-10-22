@@ -1,11 +1,16 @@
 ---
-- name: Install Java Repo
-  command: add-apt-repository ppa:openjdk-r/ppa
-  tags: java
+- name: Creates directory
+  file:
+    recurse: yes
+    path: /usr/share/man/man1
+    state: directory
 
-- name: Install Java
+- name: Install Oracle Java 11
   apt:
     update_cache: yes
     name: openjdk-11-jdk
+    state: latest
     install_recommends: no
-  tags: java
+  with_items:
+    - ca-certificates
+  tags: java  
