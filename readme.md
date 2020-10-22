@@ -1,15 +1,5 @@
 # Task 4: Vagrant and Ansible
 
-**Student Name:** Dominic-Bruno Codespoti
-
-**Student ID:** 102115980
-
-**Unit Details:** SWE30004 Software Deployment and Evolution, Semester 2
-
-**Due Date:** Oct 23 by 23:59
-
-**Declaration of the task level attempted (P/C/D/HD):** HD
-
 # Issues and Fixes
 
 As Vagrant allows for utilizing multiple providers for the VMs they spin up, I chose to use Docker, as it was my prefered choice of the options listed, however I quickly ran into a bug in Vagrant. My development environment utilizes WSL 2, which Vagrant only experimentally supports. As such, I encountered several errors that many other users have also encountered, as shown below:
@@ -174,7 +164,7 @@ The Vagrantfile above is incomplete in it's current state, as the Ansible provis
 The important section of this playbook.yml are the ```roles```, which outline the rest of the template files that will be run sequentially. The first role that will be rune is the Java role, and it's ```main.yml``` can be seen in figure 5 below:
 
 ![SSH](Images/Java.PNG)
-##### **Figure 5:** Java Web App Routes 
+##### **Figure 5:** Java Role
 
 As Debian Buster and above come pre-built with the repositories that are needed for OpenJDK 11, we are able to install it without much of a set-up. The only set-up required is the ```Creates directory``` task, which equates to:
 
@@ -187,7 +177,7 @@ This folder needs to exist for the OpenJDK 11 installation to be completed succe
 When this role finishes itself, Ansible continues to the next defined role, which can be seen in figure 6 below:
 
 ![SSH](Images/Build.PNG)
-##### **Figure 6:** Java Web App Routes 
+##### **Figure 6:** Build Role
 
 This role is a three step process, and is quite simple. The first step builds a jar using the  gradle ShadowJAR plugin. This plugin creates a FatJar, which means it stores its dependencies internally. This runs the command below with the environment variable for JAVA_HOME being set:
 
