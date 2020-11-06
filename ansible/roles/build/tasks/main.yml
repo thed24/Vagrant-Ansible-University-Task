@@ -1,0 +1,24 @@
+---
+- name: Build the Jar!
+  environment:
+    JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+  command: ./gradlew shadowJar
+  args:
+    chdir: /vagrant/
+  tags: build
+
+- name: Copy Jar to Current Directory
+  command: cp /vagrant/build/libs/vagrant-1.0-SNAPSHOT-all.jar ./server.jar 
+  args:
+    chdir: /vagrant/
+  become: yes
+  become_user: root
+  tags: build
+
+- name: Start Server
+  command: java -cp server.jar Main 0.0.0.0
+  args:
+    chdir: /vagrant/
+  become: yes
+  become_user: root
+  tags: build
