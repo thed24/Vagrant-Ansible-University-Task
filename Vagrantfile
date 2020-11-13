@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
 
   config.vm.define 'db' do |dockerDb|
-    dockerDb.vm.network :private_network, type: "dhcp" # Testing a way to get containers to communicate
+    dockerDb.vm.network :private_network, type: "dhcp" 
     dockerDb.vm.provider :docker do |d|
       d.image = 'postgres'
       d.name = "db"
@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define 'web', primary: true do |dockerWeb|
     dockerWeb.vm.network :private_network, type: "dhcp"
-    dockerWeb.vm.network "forwarded_port", guest: 8080, host: 7000, host_ip: "127.0.0.1", auto_correct: true
+    dockerWeb.vm.network "forwarded_port", guest: 8080, host: 8080
     dockerWeb.vm.provider 'docker' do |d|
       d.build_dir = "."
       d.name = "web"

@@ -29,6 +29,10 @@ public class Person {
     this.isOwner = isOwner;
   }
 
+  public Person(){
+    
+  }
+
   Boolean getIsOwner() {
     return isOwner;
   }
