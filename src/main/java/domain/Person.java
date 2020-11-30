@@ -30,7 +30,9 @@ public class Person {
   }
 
   public Person(){
-    
+    this.name = "Test";
+    this.id = 12;
+    this.isOwner = false;
   }
 
   Boolean getIsOwner() {

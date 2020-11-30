@@ -4,12 +4,12 @@
 Vagrant.configure("2") do |config|
 
   config.vm.define 'db' do |dockerDb|
-    dockerDb.vm.network :private_network, type: "dhcp" 
+    dockerDb.vm.network :private_network, type: "dhcp"
     dockerDb.vm.provider :docker do |d|
       d.image = 'postgres'
       d.name = "db"
       d.remains_running = true
-      d.ports =["5432:5432"]
+      d.ports = ["5432:5432"]
       d.env = {
         "POSTGRES_USER":"postgres",
         "POSTGRES_PASSWORD":"example"
@@ -19,8 +19,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.define 'web', primary: true do |dockerWeb|
     dockerWeb.vm.network :private_network, type: "dhcp"
-    dockerWeb.vm.network "forwarded_port", guest: 8080, host: 8080
     dockerWeb.vm.provider 'docker' do |d|
+      d.ports = ["8080:8080"]
       d.build_dir = "."
       d.name = "web"
       d.has_ssh = true

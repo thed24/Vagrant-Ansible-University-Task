@@ -4,3 +4,5 @@
 bin
 build
 gradle
+
+Hey SVO! How have you been? I fixed up that repo, and fixed up a little bug in the original source code so that the server is able to talk to the DB. You mentioned that I should look into the security-testing repo and pick an area that I wanted to know more about, and I think I want to know more about is Ansible and it's best practices as I'm not very well versed with it :joy: Does that sound okay? 
